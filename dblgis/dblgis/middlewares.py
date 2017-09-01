@@ -7,6 +7,16 @@
 
 from scrapy import signals
 
+import random
+
+
+class ProxyMiddleware(object):
+    def process_request(self, request, spider):
+        request.meta['proxy'] = 'https://{}'.format(self.proxy)
+
+    proxy_list = open('dblgis/lists/proxy_list.txt').read().split('\n')
+    proxy = random.choice(proxy_list)
+
 
 class DblgisSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,

@@ -9,6 +9,5 @@ import scrapy
 
 
 class DblgisItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    ua = scrapy.Field()
+    country = scrapy.Field()
