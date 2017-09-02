@@ -14,4 +14,4 @@ class DblgisItem(scrapy.Item):
 
 
 class RubricsItem(scrapy.Item):
-    id_sub_rubric = scrapy.Field()
+    all_item = scrapy.Field()
