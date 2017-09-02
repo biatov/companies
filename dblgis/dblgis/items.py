@@ -11,3 +11,7 @@ import scrapy
 class DblgisItem(scrapy.Item):
     ua = scrapy.Field()
     country = scrapy.Field()
+
+
+class RubricsItem(scrapy.Item):
+    id_sub_rubric = scrapy.Field()

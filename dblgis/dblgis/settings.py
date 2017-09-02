@@ -20,7 +20,7 @@ NEWSPIDER_MODULE = 'dblgis.spiders'
 USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.9 Safari/536.5'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -57,7 +57,7 @@ ROBOTSTXT_OBEY = True
 #    'dblgis.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 DOWNLOADER_MIDDLEWARES = {
-    'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
     'dblgis.middlewares.ProxyMiddleware': 100,
 }
 
