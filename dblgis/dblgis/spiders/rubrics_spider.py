@@ -17,7 +17,7 @@ class RubricsSpider(scrapy.Spider):
         json_response = json.loads(response.body_as_unicode())
         rubrics_data = list(map(lambda j: list(map(lambda i: i['id'], j['rubrics'])), json_response['result']['items']))
         id_sub_rubrics = list(filter(None, reduce(lambda x, y: x + y, rubrics_data)))
-        for id_sub in id_sub_rubrics:
+        for id_sub in id_sub_rubrics[:2]:
             api_sub_rubrics = 'https://catalog.api.2gis.ru/2.0/catalog/marker/search?page=1&page_size=10000&rubric_id=%s&region_id=32&locale=ru_RU&key=rutnpt3272' % id_sub
             yield scrapy.Request(api_sub_rubrics, callback=self.parse_sub)
 

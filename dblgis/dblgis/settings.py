@@ -56,10 +56,18 @@ ROBOTSTXT_OBEY = False
 #DOWNLOADER_MIDDLEWARES = {
 #    'dblgis.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
+
+RETRY_TIMES = 2
+RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
+
 DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 90,
+    'scrapy_proxies.RandomProxy': 100,
     'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
-    'dblgis.middlewares.ProxyMiddleware': 100,
 }
+
+PROXY_LIST = 'proxy_list.txt'
+PROXY_MODE = 0
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
