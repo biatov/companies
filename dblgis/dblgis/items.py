@@ -8,10 +8,5 @@
 import scrapy
 
 
-class DblgisItem(scrapy.Item):
-    ua = scrapy.Field()
-    country = scrapy.Field()
-
-
 class RubricsItem(scrapy.Item):
     all_item = scrapy.Field()

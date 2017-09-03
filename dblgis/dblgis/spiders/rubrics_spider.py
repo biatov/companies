@@ -17,7 +17,7 @@ class RubricsSpider(scrapy.Spider):
         json_response = json.loads(response.body_as_unicode())
         rubrics_data = list(map(lambda j: list(map(lambda i: i['id'], j['rubrics'])), json_response['result']['items']))
         id_sub_rubrics = list(filter(None, reduce(lambda x, y: x + y, rubrics_data)))
-        for id_sub in id_sub_rubrics[0:2]:
+        for id_sub in id_sub_rubrics:
             api_sub_rubrics = 'https://catalog.api.2gis.ru/2.0/catalog/marker/search?page=1&page_size=10000&rubric_id=%s&region_id=32&locale=ru_RU&key=rutnpt3272' % id_sub
             yield scrapy.Request(api_sub_rubrics, callback=self.parse_sub)
 
@@ -25,7 +25,7 @@ class RubricsSpider(scrapy.Spider):
         json_response = json.loads(response.body_as_unicode())
         id_buildings = list(map(lambda i: i['id'].split('_')[0], json_response['result']['items']))
         full_list_buildings = id_buildings
-        for id_build in full_list_buildings[0:1]:
+        for id_build in full_list_buildings:
             api_building_data = 'https://catalog.api.2gis.ru/2.0/catalog/branch/get?id=%s&fields=items.name_ex&key=rutnpt3272' % id_build
             yield scrapy.Request(api_building_data, callback=self.parse_item)
 
